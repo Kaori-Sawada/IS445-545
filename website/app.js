@@ -6,7 +6,7 @@ const output = document.getElementById("output")
 
 const output2 = document.getElementById("output2")
 if (InputNum <= 1 || InputNum >= 11) {
-    alert('Please enter an invalid number.')
+    alert('Please enter a valid number.')
     output.innerHTML = 'Your input number is ' + InputNum + '. The valid input number is between 2 and 10. Please reload this page and try again.'
     output.style.color = "red"
 }

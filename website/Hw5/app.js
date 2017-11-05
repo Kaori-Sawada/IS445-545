@@ -20,9 +20,12 @@ if (options == 1) {
         output4.innerHTML = 'The current messages are: ' + '<br>'+ messages.join('<br>')
 } else if (options == 3) {         // input 3
     let delMsg = prompt('Enter a message index (between 1 and 5 )', 0)
-    messages.splice(delMsg, 1)
-    output4.innerHTML = 'The current messages are: ' + '<br>' + messages.join('<br>')
-
+        if (delMsg >= 1 || delMsg <= 5 ){
+        messages.splice(delMsg, 1)
+        output4.innerHTML = 'The current messages are: ' + '<br>' + messages.join('<br>')
+        } else { // THIS DOES NOT WORK
+            alert('Please enter a valid number')
+        }
 } else if (options == 0){
 output4.innerHTML = 'Good Bye'
 } else {

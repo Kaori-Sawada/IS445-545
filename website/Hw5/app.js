@@ -14,11 +14,19 @@ if (options == 1) {
     }
     output.innerHTML = 'The current messages are: ' + '<br> ' + listTop
     //return messagess;
-} else if (options == 2) {     // input 2
-    let newMsg = prompt('Enter a new message ', 0)
-        messages[messages.length]= newMsg
+} 
+
+else if (options == 2) {     // input 2
+    let newMsg1 = prompt('Enter a new message ', 0)
+        messages[messages.length]= newMsg1
+        let Linum = document.createElement('Li') //add list
+        let newMsg2 = document.createTextNode(newMsg1)  // added msg
+        Linum.appendChild(newMsg2) // add added msg
+        document.getElementById('OLlist').appendChild(Linum) //display the msg in html
         output4.innerHTML = 'The current messages are: ' + '<br>'+ messages.join('<br>')
-} else if (options == 3) {         // input 3
+}
+
+else if (options == 3) {         // input 3
     let delMsg = prompt('Enter a message index (between 1 and 5 )', 0)
         if (delMsg >= 1 || delMsg <= 5 ){
         messages.splice(delMsg, 1)
@@ -26,7 +34,9 @@ if (options == 1) {
         } else { // THIS DOES NOT WORK
             alert('Please enter a valid number')
         }
-} else if (options == 0){
+} 
+
+else if (options == 0){
 output4.innerHTML = 'Good Bye'
 } else {
     output4.innerHTML = 'Please refresh and select a correct command'

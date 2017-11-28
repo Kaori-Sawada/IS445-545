@@ -58,9 +58,3 @@ function lineClick (event){
 
     showList()
 };
-
-
-/* function incrementLike () {
-    i = candidates.likes
-    i++
-} */

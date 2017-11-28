@@ -5,7 +5,7 @@ const candidates = [
     {name:'Bruno Mars', likes: 1000},
     {name:'Steve Lacy', likes: 400},
     {name:'Erica Badu', likes: 790},
-    {name: 'Robert Glasper', likes: '800'},
+    {name: 'Robert Glasper', likes: 800},
 ]
 output.innerHTML = candidates.likes
 

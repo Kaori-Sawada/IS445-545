@@ -10,6 +10,8 @@ const app            = express();
 
 const port = 7080;
 
+
+require('./app/routes')(app, {});  //passing an empty object 空なのはまだdbセットしてないから
 app.listen(port, () => {
     console.log('Now live on ' + port);
 });

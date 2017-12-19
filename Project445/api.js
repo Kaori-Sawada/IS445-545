@@ -1,6 +1,86 @@
-const express        = require("express")
+const express = require("express")
+const api = express.Router()
+
+const store = require('./data/store')
+
+api.post('/user', (req, res) => {
+    const user = req.body
+    const users = store.getUsers()
+
+    let userId = 1
+
+    if (users.length > 0) {
+        userId = users[users.length - 1].id + 1
+    }
+
+    const newUser = {
+        id: userId,
+        ...user
+    }
+
+    users.push(newUser)
+    store.saveUsers(users)
+
+    res.json(users)
+})
+
+api.get('/user', (req, res) => {
+    const users = store.getUsers()
+    res.json(users)
+})
+
+module.exports = api
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* const express        = require("express")
+const mongoose       = require("mongoose")
 const Email          = require ("mongoose-type-email");
-const Schema         = mongoose.Schema;
+
+const Schema         = mongoose.Schema,
+      ObjectId       = Schema.ObjectId;
 
 
 //to create modular, mountable route handlers.Router is 
@@ -13,8 +93,13 @@ const store = require('./data/store')
 //define the user page route
 
 
-
 //set up database
+const validateEmail = function(email) {
+    var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    return re.test(email);
+};
+
+
 
 const contactLists = new mongoose.Schema ({
     userId    : ObjectId,
@@ -26,7 +111,8 @@ const contactLists = new mongoose.Schema ({
         type: Email,
         required: [true, 'email is required'],
         unique: true,
-        validate: [isEmail, 'Email should be username@server.domain.' ]
+        validate: [validateEmail, 'Please fill a valid email address'],
+        match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
     },
     phone     : {
         type: Number, 
@@ -39,7 +125,7 @@ const contactLists = new mongoose.Schema ({
     }
     })
     
-module.exports = db.model('Contacts', contactLists);
+module.exports = mongoose.model('Contacts', contactLists);
 module.exports = api
 
-
+ */

@@ -14,7 +14,7 @@
     "ejs": "^2.5.7",
     "express": "^4.16.2",
     "mongodb": "^3.0.0-rc0",
-    "mongoose": "^4.13.7",
+    "mongoose": "^3.6.13",
     "mongoose-type-email": "^1.0.5"
   },
   "devDependencies": {

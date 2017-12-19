@@ -1,4 +1,7 @@
 const express        = require("express")
+const Email          = require ("mongoose-type-email");
+const Schema         = mongoose.Schema;
+
 
 //to create modular, mountable route handlers.Router is 
 //a complete middleware and routing system.
@@ -12,22 +15,18 @@ const store = require('./data/store')
 
 
 //set up database
-require ('mongoose-type-email');
-mongoose.connect('mongodb://K949433:hello@ds159926.mlab.com:59926/contact_lists')
-const Schema   = mongoose.Schema, 
-      ObjectId = Schema.ObjectId;
 
-const contactLists = new Schema ({
+const contactLists = new mongoose.Schema ({
     userId    : ObjectId,
     name      : {
         type: String,
         required: true
     },
     email     : {
-        type: tyemongoose.SchemaTypes.email,
-        required: true,
+        type: Email,
+        required: [true, 'email is required'],
         unique: true,
-        validate: [isEmail, "Email should be username@server.domain." ]
+        validate: [isEmail, 'Email should be username@server.domain.' ]
     },
     phone     : {
         type: Number, 
@@ -40,7 +39,7 @@ const contactLists = new Schema ({
     }
     })
     
-module.exports = mongoose.model('Contacts', contactLists);
+module.exports = db.model('Contacts', contactLists);
 module.exports = api
 
 

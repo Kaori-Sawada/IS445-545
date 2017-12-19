@@ -2,7 +2,7 @@ const express        = require('express');
 const bodyParser     = require('body-parser');
 const apiRouter      = require('./api');
 const path           = require("path");
-const mongoose       = require("mongoose");
+const mongoose       = require("mongoose").Mongoose;
 const mongodb        = require("mongodb");
 
 
@@ -15,7 +15,7 @@ const port = 7080;
 //to setup bodyParser(middleware) use "app.use"
 //bodyparser.urlencoded ([options]) returns middleware that only parses urlencoded bodies 
 //and only looks at requests where the content-type header matches the type option.
-/* app.use(bodyParser.urlencoded({ extended: true })); */
+app.use(bodyParser.urlencoded({ extended: true }));
 
 
 //returns middleware that only parses json and only looks at
@@ -52,20 +52,4 @@ app.use('/api', apiRouter)
 app.listen(port);
 console.log('App started on ' + port);
 
-
-// To set up db 
-/* MongoClient.connect('mongodb://admin:hello@ds159926.mlab.com:59926/contact_lists', (err, client) => {
-    const contactLists = database.db('contact_lists')
-    contact_lists.collection('notes')
-
-    if (err) return console.log(err)
-    require('./app/routes')(app, database);
-
-    app.listen(port, () => {
-    console.log('Now live on ' + port);
-    });
-})
-
-*/
-
-// A request is something that your server/app gets from a visitor. A response is something your app gives the user. 
+const db = mongoose.connect('mongodb://K949433:hello@ds159926.mlab.com:59926/contact_lists')

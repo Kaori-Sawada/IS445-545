@@ -1,8 +1,9 @@
 const express        = require('express');
-const MongoClient    = require('mongodb').MongoClient;
 const bodyParser     = require('body-parser');
-const db             = require('./config/db')
-const apiRouter      = require('./api')
+const apiRouter      = require('./api');
+const path           = require("path");
+const mongoose       = require("mongoose");
+const mongodb        = require("mongodb");
 
 
 // Initialize my app as an instance of Express, my framework
@@ -35,6 +36,7 @@ app.set("views", path.resolve(__dirname, "views"))
 
 const assetsPath = path.resolve(__dirname, 'views/assets')
 app.use(express.static(assetsPath))
+
 
 //systax app.METHOD(PATH, HANDLER)
 // METHOD is an HTTP request method, in lowercase.

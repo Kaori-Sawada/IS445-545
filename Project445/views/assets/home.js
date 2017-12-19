@@ -15,6 +15,8 @@ $(document).ready(function () {
         const formData = {
             name: $('input[name=name]').val(),
             email: $('input[name=email]').val(),
+            phone: $('input[name=phone]').val()
+
         }
 
         const requestData = JSON.stringify(formData)
@@ -41,6 +43,7 @@ function successHandler(users) {
         $line.append( $( "<td></td>" ).html( user.id ) )
         $line.append( $( "<td></td>" ).html( user.name ) )
         $line.append( $( "<td></td>" ).html( user.email ) )
+        $line.append( $( "<td></td>" ).html( user.phone ) )
         $table.append( $line )
     }
 

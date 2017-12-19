@@ -29,6 +29,21 @@ api.get('/user', (req, res) => {
     res.json(users)
 })
 
+api.put('user/:index', (req,res) => {
+    const newUser = req.body
+    const users = store.getUsers()
+    users[index] = newUser
+    store.saveUsers(users)
+    res.json(users)
+    })
+
+api.delete('user/:index', (req, res) => {
+    const users = req.users[index]
+    store.saveUsers(users)
+})
+
+    
+
 module.exports = api
 
 
